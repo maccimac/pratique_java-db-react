@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const REACT_APP_API_URL = import.meta.env.REACT_APP_API_URL || ''
+const VITE_API_URL = import.meta.env.VITE_API_URL || ''
 
 function App() {
   const [thoughts, setThoughts] = useState([])
@@ -9,7 +9,7 @@ function App() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetch(`${REACT_APP_API_URL}/api/thoughts`)
+    fetch(`${VITE_API_URL}/api/thoughts`)
       .then(res => res.json())
       .then(setThoughts)
       .catch(() => setError('Could not reach the backend.'))
@@ -23,7 +23,7 @@ function App() {
       setError('Max 280 characters.')
       return
     }
-    fetch(`${REACT_APP_API_URL}/api/thoughts`, {
+    fetch(`${VITE_API_URL}/api/thoughts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: trimmed }),
