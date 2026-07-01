@@ -7,7 +7,7 @@ function App() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetch('/api/thoughts')
+    fetch('https://pratiquejava-db-react-production.up.railway.app/api/thoughts')
       .then(res => res.json())
       .then(setThoughts)
       .catch(() => setError('Could not reach the backend.'))
@@ -21,7 +21,7 @@ function App() {
       setError('Max 280 characters.')
       return
     }
-    fetch('/api/thoughts', {
+    fetch('https://pratiquejava-db-react-production.up.railway.app/api/thoughts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: trimmed }),
